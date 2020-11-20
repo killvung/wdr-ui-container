@@ -3,9 +3,9 @@ const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlug
 const path = require("path");
 
 module.exports = (env) => {
-  // TODO: Identify actual production URL
   const WDR_UI_WRITE_URL = env.NODE_ENV === "development" ?
-    "wdr_ui_WRITE@http://localhost:8081/remoteEntry.js" : "wdr_ui_write@http://localhost:8081/remoteEntry.js";
+    "wdr_ui_WRITE@http://localhost:8081/remoteEntry.js" :
+    "wdr_ui_write@https://wdr-ui-write.netlify.app/remoteEntry.js";
 
   return {
     entry: "./src/index",
