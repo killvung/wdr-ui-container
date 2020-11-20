@@ -4,8 +4,8 @@ const path = require("path");
 
 module.exports = (env) => {
   // TODO: Identify actual production URL
-  const WDR_UI_DRAW_URL = env.NODE_ENV === "development" ?
-    "wdr_ui_draw@http://localhost:8081/remoteEntry.js" : "wdr_ui_draw@http://localhost:8081/remoteEntry.js";
+  const WDR_UI_WRITE_URL = env.NODE_ENV === "development" ?
+    "wdr_ui_WRITE@http://localhost:8081/remoteEntry.js" : "wdr_ui_write@http://localhost:8081/remoteEntry.js";
 
   return {
     entry: "./src/index",
@@ -43,7 +43,7 @@ module.exports = (env) => {
       new ModuleFederationPlugin({
         name: "wdr_ui_container",
         remotes: {
-          "wdr_ui_draw": WDR_UI_DRAW_URL
+          "wdr_ui_write": WDR_UI_WRITE_URL
         },
         shared: ["react", "react-dom"],
       }),
