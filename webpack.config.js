@@ -3,15 +3,16 @@ const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlug
 const path = require("path");
 
 module.exports = (env) => {
-  const WDR_UI_WRITE_URL = env.NODE_ENV === "development" ?
-    "wdr_ui_write@http://localhost:8081/remoteEntry.js" :
-    "wdr_ui_write@https://wdr-write.netlify.app/remoteEntry.js";
+  const WDR_UI_WRITE_URL_DEV = "wdr_ui_write@http://localhost:8081/remoteEntry.js";
+  const WDR_UI_WRITE_URL_PROD = "wdr_ui_write@https://wdr-write.netlify.app/remoteEntry.js";
+
+  const WDR_UI_LABEL_URL_DEV = "wdr_ui_label@http://localhost:8082/remoteEntry.js";
+  const WDR_UI_LABEL_URL_PROD = "wdr_ui_label@https://wdr-label.netlify.app/remoteEntry.js";
 
   return {
     entry: "./src/index",
     devServer: {
       contentBase: path.join(__dirname, "dist"),
-      publicPath: path.join(__dirname, "dist"),
       port: 8080,
     },
     output: {
@@ -43,7 +44,8 @@ module.exports = (env) => {
       new ModuleFederationPlugin({
         name: "wdr_ui_container",
         remotes: {
-          "wdr_ui_write": WDR_UI_WRITE_URL
+          "wdr_ui_write": WDR_UI_WRITE_URL_PROD,
+          "wdr_ui_label": WDR_UI_LABEL_URL_PROD,
         },
         shared: ["react", "react-dom"],
       }),
