@@ -6,8 +6,8 @@ module.exports = (env) => {
   const WDR_UI_WRITE_URL_DEV = "wdr_ui_write@http://localhost:8081/remoteEntry.js";
   const WDR_UI_WRITE_URL_PROD = "wdr_ui_write@https://wdr-write.netlify.app/remoteEntry.js";
 
-  const WDR_UI_LABEL_URL_DEV = "wdr_ui_label@http://localhost:8082/remoteEntry.js";
-  const WDR_UI_LABEL_URL_PROD = "wdr_ui_label@https://wdr-label.netlify.app/remoteEntry.js";
+  const WDR_UI_REPORT_URL_DEV = "wdr_ui_report@http://localhost:8082/remoteEntry.js";
+  const WDR_UI_REPORT_URL_PROD = "wdr_ui_report@https://wdr-report.netlify.app/remoteEntry.js";
 
   return {
     entry: "./src/index",
@@ -45,7 +45,7 @@ module.exports = (env) => {
         name: "wdr_ui_container",
         remotes: {
           "wdr_ui_write": WDR_UI_WRITE_URL_PROD,
-          "wdr_ui_label": WDR_UI_LABEL_URL_PROD,
+          "wdr_ui_report": WDR_UI_REPORT_URL_PROD,
         },
         shared: ["react", "react-dom"],
       }),
