@@ -7,7 +7,7 @@ const App = () => (
   <div>
     <h2>Main App</h2>
     <React.Suspense fallback="Loading Label">
-      <LabelApp />
+      <LabelApp result={[]} />
     </React.Suspense>
     <React.Suspense fallback="Loading Writing board">
       <WriteApp />
