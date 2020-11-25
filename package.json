@@ -20,11 +20,13 @@
   },
   "scripts": {
     "start": "webpack serve --env NODE_ENV=development",
-    "build": "webpack --env NODE_ENV=production",
+    "build": "npm run clean && webpack --env NODE_ENV=production",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^2.7.0",
+    "copy-webpack-plugin": "^6.3.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   }
